@@ -9,25 +9,20 @@ static class BubbleSort
 {
     public static T[] Sort<T>(T[] arr) where T : IComparable<T>
     {
-        bool sorted = true;
+        bool sorted = false;
         int index = 1;
-        int startIndex = 1;
         while (!sorted)
         {
+            //Console.WriteLine("Array: " + ArrayToString.Execute(arr));
             sorted = true;
-            for(int i = 1; i < arr.Length-1; i++)
+            for(int i = index; i < arr.Length; i++)
             {
-                if (arr[index-1].CompareTo( arr[index] ) == -1)//MODIFY LATER FOR ASC/DESC
+                if (arr[i-1].CompareTo( arr[i] ) == 1)//MODIFY LATER FOR ASC/DESC
                 {
-                    Swap.Execute(ref arr[index-1], ref arr[index]);
-                    if (sorted)
-                    {
-                        startIndex = index + 1;
-                        sorted = false;
-                    }
+                    Swap.Execute(ref arr[i-1], ref arr[i]);
+                    sorted = false;
                 }
             }
-            index = startIndex;
         }
 
         return arr;

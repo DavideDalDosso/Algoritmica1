@@ -8,7 +8,61 @@ class MergeSort
 {
     public static T[] Sort<T>(T[] arr) where T : IComparable<T>
     {
-        throw new NotImplementedException();
+        //Console.WriteLine("Array: " + ArrayToString.Execute(arr));
+        if (arr.Length == 1) return arr;
+
+        var half = arr.Length / 2;
+        var extra = arr.Length % 2 == 1 ? 1 : 0;
+
+        var leftArr = new T[half + extra];
+        for(var i = 0; i < half; i++)
+        {
+            leftArr[i] = arr[i];
+        }
+        if(extra > 0) leftArr[half] = arr[half];
+
+        var rightArr = new T[half];
+        for (var i = 0; i < half; i++)
+        {
+            rightArr[i] = arr[i + half + extra];
+        }
+
+        Sort(leftArr);
+        //Console.WriteLine("Array: " + ArrayToString.Execute(leftArr));
+        Sort(rightArr);
+        //Console.WriteLine("Array: " + ArrayToString.Execute(rightArr));
+
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int index = 0;
+
+        while (leftIndex < leftArr.Length && rightIndex < rightArr.Length)
+        {
+            if ( leftArr[leftIndex].CompareTo(rightArr[rightIndex]) == 1)
+            {
+                arr[index] = rightArr[rightIndex];
+                index++;
+                rightIndex++;
+            } else
+            {
+                arr[index] = leftArr[leftIndex];
+                index++;
+                leftIndex++;
+            }
+        }
+        while (leftIndex < leftArr.Length)
+        {
+            arr[index] = leftArr[leftIndex];
+            index++;
+            leftIndex++;
+        }
+        while (rightIndex < rightArr.Length)
+        {
+            arr[index] = rightArr[rightIndex];
+            index++;
+            rightIndex++;
+        }
+
         return arr;
     }
 }

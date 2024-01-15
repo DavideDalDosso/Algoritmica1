@@ -12,8 +12,8 @@ class ArrayToString
 
         for(int i=0; i<arr.Length; i++)
         {
-            result += result[i].ToString();
-            if(i == result.Length - 1) result += "}";
+            result += arr[i];
+            if(i == arr.Length - 1) result += "}";
             else result += ", ";
         }
 

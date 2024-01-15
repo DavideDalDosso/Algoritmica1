@@ -57,7 +57,7 @@ class ProgramMCD
         var seconds = (end.Ticks - start.Ticks) / 10000000f;
 
         Console.WriteLine();
-        Console.WriteLine("That took " + seconds.ToString() + " seconds");
+        Console.WriteLine("That took " + seconds + " seconds");
         //Please not that the operation time may fluctuate depending on the OS scheduling time
 
         Console.WriteLine();
@@ -80,6 +80,6 @@ class ProgramMCD
         seconds = (end.Ticks - start.Ticks) / 10000000f;
 
         Console.WriteLine();
-        Console.WriteLine("That took " + seconds.ToString() + " seconds");
+        Console.WriteLine("That took " + seconds + " seconds");
     }
 }
