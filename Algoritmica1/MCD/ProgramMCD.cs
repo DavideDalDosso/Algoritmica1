@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 
-class Program
+class ProgramMCD
 {
     public static void Main(String[] args)
     {
