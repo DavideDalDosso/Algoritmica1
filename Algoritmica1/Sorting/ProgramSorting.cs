@@ -9,6 +9,7 @@ class ProgramSorting
     public static void Main(String[] args)
     {
         var array = new int[]{5,6,9,1,2,8,7,3,420,1337,21,-1,13};
+        //var array = new int[] { 37, 13 };
 
         Console.WriteLine("THE ARRAY");
         Console.WriteLine( ArrayToString.Execute(array) );
@@ -24,7 +25,7 @@ class ProgramSorting
         var start = DateTime.Now;
         ///START STUFF
 
-        BubbleSort.Sort( bubbleArray );
+        BubbleSort.Sort( bubbleArray, SortMode.Desc );
 
         ///END STUFF
         var end = DateTime.Now;
@@ -47,7 +48,7 @@ class ProgramSorting
         start = DateTime.Now;
         ///START STUFF
 
-        InsertionSort.Sort(insertionArray);
+        InsertionSort.Sort(insertionArray, SortMode.Desc);
 
         ///END STUFF
         end = DateTime.Now;
@@ -70,7 +71,7 @@ class ProgramSorting
         start = DateTime.Now;
         ///START STUFF
 
-        MergeSort.Sort(mergeArray);
+        MergeSort.Sort(mergeArray, SortMode.Desc);
 
         ///END STUFF
         end = DateTime.Now;
@@ -93,7 +94,7 @@ class ProgramSorting
         start = DateTime.Now;
         ///START STUFF
 
-        QuickSort.Sort(quickArray);
+        QuickSort.Sort(quickArray, SortMode.Desc);
 
         ///END STUFF
         end = DateTime.Now;

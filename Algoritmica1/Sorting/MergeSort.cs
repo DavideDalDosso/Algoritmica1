@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 class MergeSort
 {
-    public static T[] Sort<T>(T[] arr) where T : IComparable<T>
+    public static T[] Sort<T>(T[] arr, SortMode mode) where T : IComparable<T>
     {
         //Console.WriteLine("Array: " + ArrayToString.Execute(arr));
         if (arr.Length == 1) return arr;
+        int sortModeValue = mode == SortMode.Asc ? 1 : -1;
 
         var half = arr.Length / 2;
         var extra = arr.Length % 2 == 1 ? 1 : 0;
@@ -27,9 +28,9 @@ class MergeSort
             rightArr[i] = arr[i + half + extra];
         }
 
-        Sort(leftArr);
+        Sort(leftArr, mode);
         //Console.WriteLine("Array: " + ArrayToString.Execute(leftArr));
-        Sort(rightArr);
+        Sort(rightArr, mode);
         //Console.WriteLine("Array: " + ArrayToString.Execute(rightArr));
 
         int leftIndex = 0;
@@ -38,7 +39,7 @@ class MergeSort
 
         while (leftIndex < leftArr.Length && rightIndex < rightArr.Length)
         {
-            if ( leftArr[leftIndex].CompareTo(rightArr[rightIndex]) == 1)
+            if ( leftArr[leftIndex].CompareTo(rightArr[rightIndex]) == sortModeValue)
             {
                 arr[index] = rightArr[rightIndex];
                 index++;
