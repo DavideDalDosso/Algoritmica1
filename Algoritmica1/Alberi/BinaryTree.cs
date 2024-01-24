@@ -23,17 +23,11 @@ class BinaryTree<T> where T : IComparable<T>
             {
                 root = node;
                 return;
+            } else
+            {
+
             }
             Add(node, root);
-
-            if(root.left.imbalance < -1)
-            {
-
-            }
-            if(root.right.imbalance > 1)
-            {
-
-            }
         }
         else
         {
@@ -47,7 +41,17 @@ class BinaryTree<T> where T : IComparable<T>
                 {
                     parent.left = node;
                 }
-                parent.imbalance = parent.left.imbalance - 1;
+                parent.imbalance = parent.imbalance - 1;
+                if (parent.imbalance == -2)
+                {
+                    if (parent.left.imbalance == -1)
+                    {
+                        LeftRotate(parent.left, parent, false);
+                    } else
+                    {
+                        //LeftRightRotate(parent);
+                    }
+                }
             }
             else
             {
@@ -59,7 +63,18 @@ class BinaryTree<T> where T : IComparable<T>
                 {
                     parent.right = node;
                 }
-                parent.imbalance = parent.right.imbalance + 1;
+                parent.imbalance = parent.imbalance + 1;
+                if (parent.imbalance == 2)
+                {
+                    if (parent.right.imbalance == 1)
+                    {
+                        LeftRotate(parent.right, parent, false);
+                    }
+                    else
+                    {
+                        //RightRotate(node.right, parent, true);
+                    }
+                }
             }
         }
     }
@@ -79,7 +94,7 @@ class BinaryTree<T> where T : IComparable<T>
     {
         string result = "";
 
-        result += node.imbalance;
+        result += node.value;
         result += " ( ";
 
         if(node.left != null)
@@ -98,6 +113,35 @@ class BinaryTree<T> where T : IComparable<T>
     }
     public void Balance(BinaryNode<T> node)
     {
-
+        
+    }
+    public void RightRotate(BinaryNode<T> node, BinaryNode<T> parent, bool isLeft)
+    {
+        node.imbalance = 0;
+        parent.imbalance = 0;
+        if (parent == root) root = node.left;
+        else
+        {
+            if (isLeft) parent.left = node.left;
+            else parent.right = node.left;
+        }
+        var temp = node.left.right;
+        node.left.right = node;
+        node.left = temp;
+    }
+    public void LeftRotate(BinaryNode<T> node, BinaryNode<T> parent, bool isLeft)
+    {
+        Console.WriteLine(parent.value);
+        node.imbalance = 0;
+        parent.imbalance = 0;
+        if (node == root) root = node.right;
+        else
+        {
+            if (isLeft) parent.left = node.right;
+            else parent.left = node.right;
+        }
+        var temp = node.right.left;
+        node.right.left = node;
+        node.right = temp;
     }
 }

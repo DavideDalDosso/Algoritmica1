@@ -12,11 +12,7 @@ class ProgramTree
 
         tree.Add(6);
         tree.Add(9);
-        tree.Add(4);
-        tree.Add(2);
-        tree.Add(0);
-        tree.Add(-1);
-        tree.Add(7);
+        tree.Add(11);
 
         Console.Out.WriteLine(tree.ToString());
     }
