@@ -121,7 +121,7 @@ class BinaryTree<T> where T : IComparable<T>
     public void LeftRightRotate(BinaryNode<T> node, BinaryNode<T> parent, BinaryNode<T>? grandparent)
     {
         node.imbalance -= 1;
-        node.right.imbalance += 1;
+        node.right.imbalance -= 1;
         var temp = node.right.left;
         parent.left = node.right;
         node.right.left = node;
@@ -141,7 +141,7 @@ class BinaryTree<T> where T : IComparable<T>
     public void RightLeftRotate(BinaryNode<T> node, BinaryNode<T> parent, BinaryNode<T>? grandparent)
     {
         node.imbalance += 1;
-        node.left.imbalance -= 1;
+        node.left.imbalance += 1;
         var temp = node.left.right;
         parent.right = node.left;
         node.left.right = node;
