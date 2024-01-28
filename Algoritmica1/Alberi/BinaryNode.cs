@@ -10,4 +10,8 @@ class BinaryNode<T> where T : IComparable<T>
     public BinaryNode<T> left;
     public BinaryNode<T> right;
     public int imbalance = 0;
+    public override string ToString()
+    {
+        return value.ToString()+"("+imbalance+")";
+    }
 }
